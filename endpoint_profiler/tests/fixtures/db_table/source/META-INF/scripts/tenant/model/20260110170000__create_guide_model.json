@@ -1,0 +1,15 @@
+{
+  "scriptOperation": "CREATE_MODEL",
+  "scriptContent": {
+    "physicalMeta": {
+      "tables": {
+        "data.prctvmkt.${memberProgramCode}.Guide": {
+          "tableName": "${memberProgramCode_}guide"
+        }
+      }
+    },
+    "model": {
+      "fqn": "data.prctvmkt.${memberProgramCode}.Guide"
+    }
+  }
+}

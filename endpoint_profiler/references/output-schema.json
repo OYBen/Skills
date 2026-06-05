@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Endpoint Profiler Output",
+  "type": "object",
+  "required": ["schema_version", "source_root", "generated_at", "endpoints", "audit"],
+  "properties": {
+    "schema_version": { "const": "endpoint-profiler.v1" },
+    "source_root": { "type": "string" },
+    "generated_at": { "type": "string" },
+    "services": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "root", "dependencies", "scope_roots"],
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "root": { "type": "string", "minLength": 1 },
+          "runtime_evidence": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "dependencies": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "scope_roots": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    },
+    "endpoints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "direction", "kind", "identifier", "match_rule", "source", "metadata"],
+        "properties": {
+          "id": { "type": "string" },
+          "direction": { "enum": ["ingress", "egress"] },
+          "kind": {
+            "enum": [
+              "HTTP_API",
+              "RPC_ROUTE",
+              "WebSocket",
+              "MESSAGE_CONSUMER",
+              "EVENT_BUS_LISTENER",
+              "SCHEDULED_JOB",
+              "CLI",
+              "HTTP_CALL",
+              "RPC_CALL",
+              "DB_TABLE",
+              "DISTRIBUTED_CACHE",
+              "MESSAGE_PRODUCER",
+              "EVENT_BUS_PUBLISHER",
+              "DATAMODEL",
+              "DATA_API_CALL",
+              "DATA_API_STREAM",
+              "DATA_MODEL_SQL",
+              "ANALYTICS_MODEL_QUERY",
+              "DATA_MODEL_SCHEMA",
+              "DATA_EVENT_SCHEMA",
+              "DATA_EVENT_PUBLISHER",
+              "SDK",
+              "FILE"
+            ]
+          },
+          "identifier": { "type": "string", "minLength": 1 },
+          "match_rule": { "type": "object" },
+          "source": { "type": "object" },
+          "metadata": { "type": "object" }
+        }
+      }
+    },
+    "audit": { "type": "object" }
+  }
+}

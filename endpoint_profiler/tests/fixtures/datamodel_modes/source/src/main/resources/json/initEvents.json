@@ -1,0 +1,7 @@
+[
+  {
+    "fqn": "event.cdp.ImportExportNotify",
+    "title": "import export notify",
+    "eventType": "SIMPLE"
+  }
+]

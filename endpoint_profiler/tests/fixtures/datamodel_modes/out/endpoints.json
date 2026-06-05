@@ -1,0 +1,359 @@
+{
+  "schema_version": "endpoint-profiler.v1",
+  "source_root": "C:\\Users\\apoll\\.agents\\skills\\endpoint_profiler\\tests\\fixtures\\datamodel_modes\\source",
+  "generated_at": "2026-06-04T10:24:14.416136+00:00",
+  "services": [],
+  "endpoints": [
+    {
+      "id": "54f46a8a71a9464c",
+      "direction": "egress",
+      "kind": "DATA_API_CALL",
+      "identifier": "data.mdm.CohortMeta",
+      "match_rule": {
+        "type": "dataapi_model",
+        "fqn": "data.mdm.CohortMeta",
+        "operation": "commonSqlExecute",
+        "access_mode": "dataapi-sql",
+        "source_kind": "dataapi_sql",
+        "query_language": "SQL"
+      },
+      "owner": {
+        "service": null,
+        "module": "src/main/java/com/example",
+        "service_scope": null
+      },
+      "source": {
+        "file": "src/main/java/com/example/CdpModelAccess.java",
+        "line": 10,
+        "symbol": null
+      },
+      "metadata": {
+        "framework": "dataapi-sql",
+        "operation": null,
+        "confidence": 0.86,
+        "evidence": [
+          "String sql = \"select id from data.mdm.CohortMeta where id = :id\";",
+          "dataApiService.commonSqlExecute(sql, Map.of(\"id\", \"1\"));"
+        ],
+        "evidence_count": 2,
+        "source_refs": [
+          "src/main/java/com/example/CdpModelAccess.java:9",
+          "src/main/java/com/example/CdpModelAccess.java:10"
+        ],
+        "service_fanout": []
+      }
+    },
+    {
+      "id": "cf05f7dfc9fd855c",
+      "direction": "egress",
+      "kind": "ANALYTICS_MODEL_QUERY",
+      "identifier": "data.cdp.calc.SegmentTaskTarget",
+      "match_rule": {
+        "type": "data_model_sql",
+        "fqn": "data.cdp.calc.SegmentTaskTarget",
+        "operation": "sql",
+        "access_mode": "analytics-sql",
+        "source_kind": "table_adapter",
+        "query_language": "SQL"
+      },
+      "owner": {
+        "service": null,
+        "module": "src/main/java/com/example",
+        "service_scope": null
+      },
+      "source": {
+        "file": "src/main/java/com/example/CdpModelAccess.java",
+        "line": 14,
+        "symbol": null
+      },
+      "metadata": {
+        "framework": "dataapi-sql",
+        "operation": null,
+        "confidence": 0.82,
+        "evidence": [
+          "String sql = \"SELECT bitmap_iterate(serialNumBitmap) AS serialNum FROM data.cdp.calc.SegmentTaskTarget WHERE originId = :originId\";"
+        ],
+        "evidence_count": 1,
+        "source_refs": [
+          "src/main/java/com/example/CdpModelAccess.java:14"
+        ]
+      }
+    },
+    {
+      "id": "1d3fe3b867a3a232",
+      "direction": "egress",
+      "kind": "DATA_API_STREAM",
+      "identifier": "data.cdp.calc.SegmentTaskTarget",
+      "match_rule": {
+        "type": "dataapi_model",
+        "fqn": "data.cdp.calc.SegmentTaskTarget",
+        "operation": "queryByStream",
+        "access_mode": "dataapi-stream-sql",
+        "source_kind": "dataapi_sql",
+        "query_language": "SQL"
+      },
+      "owner": {
+        "service": null,
+        "module": "src/main/java/com/example",
+        "service_scope": null
+      },
+      "source": {
+        "file": "src/main/java/com/example/CdpModelAccess.java",
+        "line": 15,
+        "symbol": null
+      },
+      "metadata": {
+        "framework": "dataapi-sql",
+        "operation": null,
+        "confidence": 0.86,
+        "evidence": [
+          "dataApiService.queryByStream(sql, Map.of(\"originId\", \"tag-1\"), rows -> {}, 5000);"
+        ],
+        "evidence_count": 1,
+        "source_refs": [
+          "src/main/java/com/example/CdpModelAccess.java:15"
+        ]
+      }
+    },
+    {
+      "id": "2e4eb1b87b836d83",
+      "direction": "egress",
+      "kind": "DATA_API_CALL",
+      "identifier": "data.mdm.TagCategory",
+      "match_rule": {
+        "type": "dataapi_model",
+        "fqn": "data.mdm.TagCategory",
+        "operation": "batchMergeModel",
+        "access_mode": "dataapi-http",
+        "source_kind": "dataapi_call"
+      },
+      "owner": {
+        "service": null,
+        "module": "src/main/java/com/example",
+        "service_scope": null
+      },
+      "source": {
+        "file": "src/main/java/com/example/CdpModelAccess.java",
+        "line": 19,
+        "symbol": null
+      },
+      "metadata": {
+        "framework": "dataapi",
+        "operation": null,
+        "confidence": 0.86,
+        "evidence": [
+          "dataApiService.batchMergeModel(\"data.mdm.TagCategory\", java.util.List.of(\"id\", \"name\"), java.util.List.of(java.util.Map.of(\"id\", \"1\", \"name\", \"A\")));"
+        ],
+        "evidence_count": 1,
+        "source_refs": [
+          "src/main/java/com/example/CdpModelAccess.java:19"
+        ]
+      }
+    },
+    {
+      "id": "290e9b667a0336d3",
+      "direction": "egress",
+      "kind": "EVENT_BUS_PUBLISHER",
+      "identifier": "event.cdp.ImportExportNotify",
+      "match_rule": {
+        "type": "event",
+        "event": "event.cdp.ImportExportNotify",
+        "bus": "eventservice",
+        "source_kind": "eventservice_publish_call"
+      },
+      "owner": {
+        "service": null,
+        "module": "src/main/java/com/example",
+        "service_scope": null
+      },
+      "source": {
+        "file": "src/main/java/com/example/CdpModelAccess.java",
+        "line": 23,
+        "symbol": null
+      },
+      "metadata": {
+        "framework": "eventservice",
+        "operation": null,
+        "confidence": 0.84,
+        "evidence": [
+          "eventProducer.publishBatchSync(PublishOptions.of(\"event.cdp.ImportExportNotify\", BodySerializer.map()), java.util.List.of(Event.of(\"event.cdp.ImportExportNotify\", \"1\", Map.of())));"
+        ],
+        "evidence_count": 4,
+        "source_refs": [
+          "src/main/java/com/example/CdpModelAccess.java:23"
+        ],
+        "service_fanout": []
+      }
+    }
+  ],
+  "audit": {
+    "graphify_used": false,
+    "graphify_index_path": null,
+    "graphify_summary": {
+      "node_count": 0,
+      "edge_count": 0,
+      "candidate_source_files": 0
+    },
+    "preflight": {
+      "scanned_files": 2,
+      "capabilities": [
+        {
+          "name": "Redis/Redisson",
+          "potential_endpoint_kinds": [
+            "DISTRIBUTED_CACHE"
+          ],
+          "confirming_features": [
+            "Redis key enum",
+            "redisCache operation",
+            "Redisson lock",
+            "RedisTemplate operation"
+          ],
+          "evidence": [
+            "src/main/java/com/example/RedisConfig.java: redis"
+          ]
+        },
+        {
+          "name": "Shuyun DataAPI",
+          "potential_endpoint_kinds": [
+            "DATA_API_CALL",
+            "DATA_API_STREAM",
+            "ANALYTICS_MODEL_QUERY"
+          ],
+          "confirming_features": [
+            "DataapiHttpSdk execute/importData/mergeData",
+            "DataapiWebSocketSdk or fetch stream",
+            "DataApiService SQL/model wrappers"
+          ],
+          "evidence": [
+            "src/main/java/com/example/CdpModelAccess.java: DataApiService"
+          ]
+        },
+        {
+          "name": "Shuyun EventService",
+          "potential_endpoint_kinds": [
+            "EVENT_BUS_PUBLISHER",
+            "EVENT_BUS_LISTENER"
+          ],
+          "confirming_features": [
+            "Event.of(eventFqn)",
+            "EventProducer",
+            "publishBatchSync",
+            "EventServiceSupport push/poll"
+          ],
+          "evidence": [
+            "src/main/java/com/example/CdpModelAccess.java: EventProducer"
+          ]
+        }
+      ],
+      "capability_hints": [
+        {
+          "capability": "Redis/Redisson",
+          "potential_endpoint_kinds": [
+            "DISTRIBUTED_CACHE"
+          ],
+          "confirming_features": [
+            "Redis key enum",
+            "redisCache operation",
+            "Redisson lock",
+            "RedisTemplate operation"
+          ],
+          "scan_plan": [
+            "scan RedisTemplate/StringRedisTemplate operations, Redisson locks, and distributed cache enums",
+            "confirm a stable distributed key namespace or prefix before emitting DISTRIBUTED_CACHE"
+          ],
+          "evidence": [
+            "src/main/java/com/example/RedisConfig.java: redis"
+          ],
+          "status": "candidate_only",
+          "confirmed_endpoint_count": 0,
+          "confirmed_kinds": {},
+          "audit_action": "targeted_scan_no_confirming_contract",
+          "note": "Capability is present in dependencies/frameworks, but no source/config evidence confirmed an endpoint contract.",
+          "confirmed_endpoint_samples": [],
+          "scan_plan_executed": true
+        },
+        {
+          "capability": "Shuyun DataAPI",
+          "potential_endpoint_kinds": [
+            "DATA_API_CALL",
+            "DATA_API_STREAM",
+            "ANALYTICS_MODEL_QUERY"
+          ],
+          "confirming_features": [
+            "DataapiHttpSdk execute/importData/mergeData",
+            "DataapiWebSocketSdk or fetch stream",
+            "DataApiService SQL/model wrappers"
+          ],
+          "scan_plan": [
+            "scan DataapiHttpSdk, DataapiWebSocketSdk, DataapiSdkFactory, DataApiService, and SQL/query wrapper calls",
+            "resolve data.* model FQNs and classify ordinary calls as DATA_API_CALL, streaming/fetch paths as DATA_API_STREAM, and OLAP/columnar paths as ANALYTICS_MODEL_QUERY"
+          ],
+          "evidence": [
+            "src/main/java/com/example/CdpModelAccess.java: DataApiService"
+          ],
+          "status": "confirmed_by_source",
+          "confirmed_endpoint_count": 4,
+          "confirmed_kinds": {
+            "DATA_API_CALL": 2,
+            "ANALYTICS_MODEL_QUERY": 1,
+            "DATA_API_STREAM": 1
+          },
+          "audit_action": "targeted_scan_confirmed",
+          "note": "Framework/dependency capability is present and matching source/config features produced confirmed endpoint contracts.",
+          "confirmed_endpoint_samples": [
+            "src/main/java/com/example/CdpModelAccess.java:10",
+            "src/main/java/com/example/CdpModelAccess.java:14",
+            "src/main/java/com/example/CdpModelAccess.java:15",
+            "src/main/java/com/example/CdpModelAccess.java:19"
+          ],
+          "scan_plan_executed": true
+        },
+        {
+          "capability": "Shuyun EventService",
+          "potential_endpoint_kinds": [
+            "EVENT_BUS_PUBLISHER",
+            "EVENT_BUS_LISTENER"
+          ],
+          "confirming_features": [
+            "Event.of(eventFqn)",
+            "EventProducer",
+            "publishBatchSync",
+            "EventServiceSupport push/poll"
+          ],
+          "scan_plan": [
+            "scan com.shuyun.air.es/EventService wrappers, Event.of, EventProducer, PublishOptions, and publish calls",
+            "resolve event FQN constants/templates into EVENT_BUS_PUBLISHER or EVENT_BUS_LISTENER contracts"
+          ],
+          "evidence": [
+            "src/main/java/com/example/CdpModelAccess.java: EventProducer"
+          ],
+          "status": "confirmed_by_source",
+          "confirmed_endpoint_count": 1,
+          "confirmed_kinds": {
+            "EVENT_BUS_PUBLISHER": 1
+          },
+          "audit_action": "targeted_scan_confirmed",
+          "note": "Framework/dependency capability is present and matching source/config features produced confirmed endpoint contracts.",
+          "confirmed_endpoint_samples": [
+            "src/main/java/com/example/CdpModelAccess.java:23"
+          ],
+          "scan_plan_executed": true
+        }
+      ],
+      "coverage_notes": [],
+      "rule_gap_warnings": [
+        "Capability Redis/Redisson detected but no endpoint was confirmed for DISTRIBUTED_CACHE; targeted scan plan: scan RedisTemplate/StringRedisTemplate operations, Redisson locks, and distributed cache enums; confirm a stable distributed key namespace or prefix before emitting DISTRIBUTED_CACHE"
+      ]
+    },
+    "scan_modes": [
+      "dependency-toolchain-preflight",
+      "service-discovery",
+      "maven-dependency-closure",
+      "source",
+      "graphify-candidate-scan-skipped",
+      "pattern",
+      "pattern"
+    ],
+    "warnings": []
+  }
+}

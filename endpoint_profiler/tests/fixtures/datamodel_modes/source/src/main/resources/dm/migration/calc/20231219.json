@@ -1,0 +1,15 @@
+[
+  {
+    "scriptVersion": "20231219100000002_calc_RuleMultiValueTagFqnMapping",
+    "scriptOperation": "CREATE_MODEL",
+    "scriptContent": {
+      "model": {
+        "fqn": "data.cdp.calc.RuleMultiValueTagFqnMapping",
+        "title": "rule multi value tag fqn mapping",
+        "owner": "cdp",
+        "type": "Object",
+        "useMode": "OLAP"
+      }
+    }
+  }
+]

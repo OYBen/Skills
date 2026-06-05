@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapper namespace="com.example.CustomerInfoMapper">
+  <select id="findAll" resultType="map">
+    SELECT id, name
+    FROM customer_info
+  </select>
+</mapper>

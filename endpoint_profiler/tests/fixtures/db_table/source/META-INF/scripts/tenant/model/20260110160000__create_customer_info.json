@@ -1,0 +1,15 @@
+{
+  "scriptOperation": "CREATE_MODEL",
+  "scriptContent": {
+    "physicalMeta": {
+      "tables": {
+        "data.guide.{tenantCode}.CustomerInfo": {
+          "tableName": "{tenantCode_}customer_info"
+        }
+      }
+    },
+    "model": {
+      "fqn": "data.guide.{tenantCode}.CustomerInfo"
+    }
+  }
+}

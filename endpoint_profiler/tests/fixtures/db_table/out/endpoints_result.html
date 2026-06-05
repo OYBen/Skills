@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Endpoint Profiler Result</title>
+  <style>
+    :root { color-scheme: light; --line:#d7dde5; --ink:#18212f; --muted:#667085; --bg:#f7f8fb; --panel:#ffffff; --accent:#2563eb; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: Arial, Helvetica, sans-serif; color:var(--ink); background:var(--bg); }
+    header { padding:24px 32px; background:#ffffff; border-bottom:1px solid var(--line); position:sticky; top:0; z-index:2; }
+    h1 { margin:0 0 8px; font-size:26px; }
+    h2 { margin:0 0 14px; font-size:21px; }
+    h3 { margin:18px 0 10px; font-size:15px; color:#344054; }
+    main { padding:24px 32px 48px; }
+    .meta { color:var(--muted); font-size:13px; display:flex; gap:16px; flex-wrap:wrap; }
+    .muted { color:var(--muted); font-size:13px; }
+    .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px; margin:20px 0; }
+    .card { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:14px; }
+    .card b { display:block; font-size:24px; margin-top:6px; }
+    section { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:16px; margin:18px 0; overflow:auto; }
+    table { width:100%; border-collapse:collapse; font-size:13px; }
+    th, td { border-bottom:1px solid #eef1f5; padding:8px 10px; text-align:left; vertical-align:top; }
+    th { color:#344054; background:#f9fafb; }
+    td { max-width:560px; overflow-wrap:anywhere; }
+    a { color:var(--accent); text-decoration:none; }
+    .bar { display:block; height:8px; min-width:72px; background:#e7ecf4; border-radius:999px; overflow:hidden; }
+    .bar span { display:block; height:100%; background:#2563eb; }
+    .mini { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px; }
+    .mini span { border:1px solid var(--line); border-radius:999px; padding:5px 9px; color:#344054; background:#fbfcfe; font-size:12px; }
+    .nav { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+    .nav a { border:1px solid var(--line); background:#fbfcfe; border-radius:999px; padding:5px 9px; font-size:12px; color:#344054; }
+    details { margin-top:18px; border:1px solid var(--line); border-radius:8px; background:#fbfcfe; }
+    summary { cursor:pointer; padding:10px 12px; font-weight:700; color:#344054; user-select:none; background:#f2f5f9; }
+    details table { background:#ffffff; }
+    .details-table[open] summary { border-bottom:1px solid var(--line); }
+    code { background:#eef2f7; padding:2px 4px; border-radius:4px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Endpoint Profiler Result</h1>
+    <div class="meta">
+      <span>Generated: 2026-06-04T10:24:14.417256+00:00</span>
+      <span>Source: <code>C:\Users\apoll\.agents\skills\endpoint_profiler\tests\fixtures\db_table\source</code></span>
+      <span>Graphify: not used</span>
+    </div>
+    <nav class="nav"><a href='#DB_TABLE'>DB_TABLE</a><a href='#HTTP_API'>HTTP_API</a></nav>
+  </header>
+  <main>
+    <div class="cards">
+      <div class="card">Total endpoints<b>5</b></div>
+      <div class="card">Ingress<b>1</b></div>
+      <div class="card">Egress<b>4</b></div>
+      <div class="card">Kinds<b>2</b></div>
+      <div class="card">Services<b>1</b></div>
+      <div class="card">Avg confidence<b>0.86</b></div>
+    </div>
+    <section>
+      <h2>Kind Statistics</h2>
+      <table><thead><tr><th>Kind</th><th>Count</th><th>Share</th><th>Ingress</th><th>Egress</th><th>Unique IDs</th><th>Clusters</th><th>Avg Conf.</th><th>Scale</th></tr></thead>
+      <tbody><tr><td><a href='#DB_TABLE'>DB_TABLE</a></td><td>4</td><td>80.0%</td><td>0</td><td>4</td><td>4</td><td>4</td><td>0.88</td><td><span class="bar"><span style="width:100%"></span></span></td></tr><tr><td><a href='#HTTP_API'>HTTP_API</a></td><td>1</td><td>20.0%</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0.82</td><td><span class="bar"><span style="width:25%"></span></span></td></tr></tbody></table>
+    </section>
+    <section>
+      <h2>Service x Kind Matrix</h2>
+      <table><thead><tr><th>Service</th><th>Total</th><th>DB_TABLE</th><th>HTTP_API</th></tr></thead>
+      <tbody><tr><td>unassigned</td><td>5</td><td>4</td><td>1</td></tr></tbody></table>
+    </section>
+    <section><h2>Capability Hints</h2><p class='muted'>Frameworks and dependencies are candidate clues that drive targeted scans; endpoints are emitted only after source or configuration usage evidence confirms a contract.</p><table><thead><tr><th>Capability</th><th>Status</th><th>Potential Kinds</th><th>Confirmed Kinds</th><th>Scan Plan</th><th>Confirming Features</th><th>Capability Evidence</th><th>Confirmed Endpoint Samples</th></tr></thead><tbody><tr><td>MyBatis</td><td>confirmed_by_source</td><td>DB_TABLE</td><td>DB_TABLE:3</td><td>scan @TableName, mapper interfaces, mapper XML, and table-position SQL; exclude tests, migrations, comments, and unresolved generic table constants</td><td>@TableName; mapper SQL; mapper XML table-position SQL</td><td>src/main/java/com/example/RedPacketCallBack.java: mybatis</td><td>META-INF/scripts/tenant/model/20260110160000__create_customer_info.json:1; src/main/java/com/example/RedPacketCallBack.java:5; src/main/java/com/example/UserMapper.java:6</td></tr><tr><td>Spring MVC</td><td>confirmed_by_source</td><td>HTTP_API</td><td>HTTP_API:1</td><td>scan controller annotations and class/method mapping combinations; confirm each route with HTTP method and normalized path template</td><td>@RestController; @RequestMapping; @GetMapping; @PostMapping</td><td>src/main/java/com/example/CemController.java: @PostMapping</td><td>src/main/java/com/example/CemController.java:11</td></tr></tbody></table></section>
+    <section class='kind' id='DB_TABLE'><h2>DB_TABLE</h2><div class='mini'><span>Total <b>4</b></span><span>Clusters <b>4</b></span><span>Unique identifiers <b>4</b></span><span>Avg confidence <b>0.88</b></span></div><details class='details-table' open><summary>All DB_TABLE Endpoint Details (4)</summary><table><thead><tr><th>Kind</th><th>Direction</th><th>Service</th><th>Scope</th><th>Identifier</th><th>Cluster</th><th>Conf.</th><th>Evidence Count</th><th>Primary Source</th><th>Evidence</th><th>Source Refs</th></tr></thead><tbody><tr><td>DB_TABLE</td><td>egress</td><td>unassigned</td><td></td><td>$guide</td><td>model_metadata:$guide*</td><td>0.95</td><td>1</td><td>META-INF/scripts/tenant/model/20260110170000__create_guide_model.json:1</td><td>physicalMeta.tables tableName ${memberProgramCode_}guide</td><td>META-INF/scripts/tenant/model/20260110170000__create_guide_model.json:1</td></tr><tr><td>DB_TABLE</td><td>egress</td><td>unassigned</td><td></td><td>customer_info</td><td>model_metadata:customer*</td><td>0.95</td><td>2</td><td>META-INF/scripts/tenant/model/20260110160000__create_customer_info.json:1</td><td>physicalMeta.tables tableName {tenantCode_}customer_info; FROM customer_info</td><td>META-INF/scripts/tenant/model/20260110160000__create_customer_info.json:1; src/main/resources/mapper/CustomerInfoMapper.xml:5</td></tr><tr><td>DB_TABLE</td><td>egress</td><td>unassigned</td><td></td><td>red_packet_call_back</td><td>source_sql:red*</td><td>0.75</td><td>1</td><td>src/main/java/com/example/RedPacketCallBack.java:5</td><td>@TableName(&quot;red_packet_call_back&quot;)</td><td>src/main/java/com/example/RedPacketCallBack.java:5</td></tr><tr><td>DB_TABLE</td><td>egress</td><td>unassigned</td><td></td><td>t_user</td><td>source_sql:t*</td><td>0.85</td><td>1</td><td>src/main/java/com/example/UserMapper.java:6</td><td>@Select(&quot;SELECT status FROM t_user WHERE third_user_id = #{ownerId}&quot;)</td><td>src/main/java/com/example/UserMapper.java:6</td></tr></tbody></table></details><h3>Clusters</h3><table><thead><tr><th>Cluster</th><th>Count</th><th>Services</th><th>Unique IDs</th><th>Avg Conf.</th><th>Top Modules</th><th>Examples</th><th>Share</th></tr></thead><tbody><tr><td>model_metadata:$guide*</td><td>1</td><td>1</td><td>1</td><td>0.95</td><td>META-INF/scripts (1)</td><td>$guide</td><td><span class="bar"><span style="width:100%"></span></span></td></tr><tr><td>model_metadata:customer*</td><td>1</td><td>1</td><td>1</td><td>0.95</td><td>META-INF/scripts (1)</td><td>customer_info</td><td><span class="bar"><span style="width:100%"></span></span></td></tr><tr><td>source_sql:red*</td><td>1</td><td>1</td><td>1</td><td>0.75</td><td>src/main (1)</td><td>red_packet_call_back</td><td><span class="bar"><span style="width:100%"></span></span></td></tr><tr><td>source_sql:t*</td><td>1</td><td>1</td><td>1</td><td>0.85</td><td>src/main (1)</td><td>t_user</td><td><span class="bar"><span style="width:100%"></span></span></td></tr></tbody></table><h3>Lowest Confidence Samples</h3><table><thead><tr><th>Conf.</th><th>Kind</th><th>Service</th><th>Identifier</th><th>Source</th><th>Evidence</th></tr></thead><tbody><tr><td>0.75</td><td>DB_TABLE</td><td>unassigned</td><td>red_packet_call_back</td><td>src/main/java/com/example/RedPacketCallBack.java:5</td><td>@TableName(&quot;red_packet_call_back&quot;)</td></tr><tr><td>0.85</td><td>DB_TABLE</td><td>unassigned</td><td>t_user</td><td>src/main/java/com/example/UserMapper.java:6</td><td>@Select(&quot;SELECT status FROM t_user WHERE third_user_id = #{ownerId}&quot;)</td></tr><tr><td>0.95</td><td>DB_TABLE</td><td>unassigned</td><td>customer_info</td><td>META-INF/scripts/tenant/model/20260110160000__create_customer_info.json:1</td><td>physicalMeta.tables tableName {tenantCode_}customer_info; FROM customer_info</td></tr><tr><td>0.95</td><td>DB_TABLE</td><td>unassigned</td><td>$guide</td><td>META-INF/scripts/tenant/model/20260110170000__create_guide_model.json:1</td><td>physicalMeta.tables tableName ${memberProgramCode_}guide</td></tr></tbody></table></section><section class='kind' id='HTTP_API'><h2>HTTP_API</h2><div class='mini'><span>Total <b>1</b></span><span>Clusters <b>1</b></span><span>Unique identifiers <b>1</b></span><span>Avg confidence <b>0.82</b></span></div><details class='details-table' open><summary>All HTTP_API Endpoint Details (1)</summary><table><thead><tr><th>Kind</th><th>Direction</th><th>Service</th><th>Scope</th><th>Identifier</th><th>Cluster</th><th>Conf.</th><th>Evidence Count</th><th>Primary Source</th><th>Evidence</th><th>Source Refs</th></tr></thead><tbody><tr><td>HTTP_API</td><td>ingress</td><td>unassigned</td><td></td><td>POST /cem/event</td><td>POST /cem/**</td><td>0.82</td><td>1</td><td>src/main/java/com/example/CemController.java:11</td><td>@PostMapping(&quot;event&quot;)</td><td>src/main/java/com/example/CemController.java:11</td></tr></tbody></table></details><h3>Clusters</h3><table><thead><tr><th>Cluster</th><th>Count</th><th>Services</th><th>Unique IDs</th><th>Avg Conf.</th><th>Top Modules</th><th>Examples</th><th>Share</th></tr></thead><tbody><tr><td>POST /cem/**</td><td>1</td><td>1</td><td>1</td><td>0.82</td><td>src/main (1)</td><td>POST /cem/event</td><td><span class="bar"><span style="width:100%"></span></span></td></tr></tbody></table><h3>Lowest Confidence Samples</h3><table><thead><tr><th>Conf.</th><th>Kind</th><th>Service</th><th>Identifier</th><th>Source</th><th>Evidence</th></tr></thead><tbody><tr><td>0.82</td><td>HTTP_API</td><td>unassigned</td><td>POST /cem/event</td><td>src/main/java/com/example/CemController.java:11</td><td>@PostMapping(&quot;event&quot;)</td></tr></tbody></table></section>
+  </main>
+</body>
+</html>

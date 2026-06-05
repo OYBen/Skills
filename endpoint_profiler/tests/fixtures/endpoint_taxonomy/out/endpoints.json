@@ -1,0 +1,763 @@
+{
+  "schema_version": "endpoint-profiler.v1",
+  "source_root": "C:\\Users\\apoll\\.agents\\skills\\endpoint_profiler\\tests\\fixtures\\endpoint_taxonomy\\source",
+  "generated_at": "2026-06-04T10:24:14.431029+00:00",
+  "services": [],
+  "endpoints": [
+    {
+      "id": "a1d4aff7d5a4c911",
+      "direction": "egress",
+      "kind": "HTTP_CALL",
+      "identifier": "GET /boss/oauth/token",
+      "match_rule": {
+        "type": "url_template",
+        "method": "GET",
+        "path": "/boss/oauth/token",
+        "client": "boss",
+        "query_params": {
+          "appid": "{appId}",
+          "code": "{code}"
+        },
+        "target_service": "boss"
+      },
+      "owner": {
+        "service": null,
+        "module": "src/main/java/com/example",
+        "service_scope": null
+      },
+      "source": {
+        "file": "src/main/java/com/example/BossFeignClient.java",
+        "line": 9,
+        "symbol": null
+      },
+      "metadata": {
+        "framework": "feign-retrofit-client",
+        "operation": null,
+        "confidence": 0.82,
+        "evidence": [
+          "@GetMapping(\"/boss/oauth/token?appid={appId}&code={code}\")"
+        ],
+        "evidence_count": 2,
+        "source_refs": [
+          "src/main/java/com/example/BossFeignClient.java:9",
+          "src/main/java/com/example/BossFeignClient.java:8"
+        ],
+        "service_fanout": []
+      }
+    },
+    {
+      "id": "43b0c9664cfff8f1",
+      "direction": "egress",
+      "kind": "HTTP_CALL",
+      "identifier": "POST /data/query/occIds",
+      "match_rule": {
+        "type": "url_template",
+        "method": "POST",
+        "path": "/data/query/occIds",
+        "client": "project-http-wrapper"
+      },
+      "owner": {
+        "service": null,
+        "module": "src/main/java/com/example",
+        "service_scope": null
+      },
+      "source": {
+        "file": "src/main/java/com/example/CdpDataService.java",
+        "line": 11,
+        "symbol": null
+      },
+      "metadata": {
+        "framework": "project-http-wrapper",
+        "operation": null,
+        "confidence": 0.78,
+        "evidence": [
+          "return cdpOkHttpService.responseContentByPost(url, request);"
+        ],
+        "evidence_count": 1,
+        "source_refs": [
+          "src/main/java/com/example/CdpDataService.java:11"
+        ]
+      }
+    },
+    {
+      "id": "ac94428fd451b484",
+      "direction": "egress",
+      "kind": "HTTP_CALL",
+      "identifier": "POST {kyLinApiConfig.mbspApiUrl}/member/register/wechat",
+      "match_rule": {
+        "type": "url_template",
+        "url": "{kyLinApiConfig.mbspApiUrl}/member/register/wechat",
+        "resolved": false,
+        "method": "POST",
+        "client": "project-http-wrapper"
+      },
+      "owner": {
+        "service": null,
+        "module": "src/main/java/com/example",
+        "service_scope": null
+      },
+      "source": {
+        "file": "src/main/java/com/example/ConfigBaseUrlClient.java",
+        "line": 9,
+        "symbol": null
+      },
+      "metadata": {
+        "framework": "project-http-wrapper",
+        "operation": null,
+        "confidence": 0.78,
+        "evidence": [
+          "return kylinOkHttpService.responseContentByPost(url, request);"
+        ],
+        "evidence_count": 1,
+        "source_refs": [
+          "src/main/java/com/example/ConfigBaseUrlClient.java:9"
+        ]
+      }
+    },
+    {
+      "id": "f91742de60397da5",
+      "direction": "egress",
+      "kind": "HTTP_CALL",
+      "identifier": "GET {kyLinApiConfig.customerUrl}/data/report/guide",
+      "match_rule": {
+        "type": "url_template",
+        "url": "{kyLinApiConfig.customerUrl}/data/report/guide",
+        "resolved": false,
+        "method": "GET",
+        "client": "project-http-wrapper"
+      },
+      "owner": {
+        "service": null,
+        "module": "src/main/java/com/example",
+        "service_scope": null
+      },
+      "source": {
+        "file": "src/main/java/com/example/ConfigBaseUrlClient.java",
+        "line": 14,
+        "symbol": null
+      },
+      "metadata": {
+        "framework": "project-http-wrapper",
+        "operation": null,
+        "confidence": 0.78,
+        "evidence": [
+          "return kylinOkHttpService.responseContentByGet(url);"
+        ],
+        "evidence_count": 1,
+        "source_refs": [
+          "src/main/java/com/example/ConfigBaseUrlClient.java:14"
+        ]
+      }
+    },
+    {
+      "id": "e96b2d45648a13a1",
+      "direction": "ingress",
+      "kind": "EVENT_BUS_LISTENER",
+      "identifier": "OrderChangedEvent",
+      "match_rule": {
+        "type": "event",
+        "event": "OrderChangedEvent",
+        "bus": "spring-application-event"
+      },
+      "owner": {
+        "service": null,
+        "module": "src/main/java/com/example",
+        "service_scope": null
+      },
+      "source": {
+        "file": "src/main/java/com/example/EndpointTaxonomySamples.java",
+        "line": 10,
+        "symbol": null
+      },
+      "metadata": {
+        "framework": "spring-event",
+        "operation": null,
+        "confidence": 0.68,
+        "evidence": [
+          "public class EndpointTaxonomySamples implements ApplicationListener<OrderChangedEvent>, CommandLineRunner {",
+          "@EventListener"
+        ],
+        "evidence_count": 2,
+        "source_refs": [
+          "src/main/java/com/example/EndpointTaxonomySamples.java:10",
+          "src/main/java/com/example/EndpointTaxonomySamples.java:50"
+        ],
+        "service_fanout": []
+      }
+    },
+    {
+      "id": "e4d4ae5fc0608bda",
+      "direction": "ingress",
+      "kind": "MESSAGE_CONSUMER",
+      "identifier": "orders.created",
+      "match_rule": {
+        "type": "topic",
+        "broker": "rabbitmq",
+        "queue": "orders.created"
+      },
+      "owner": {
+        "service": null,
+        "module": "src/main/java/com/example",
+        "service_scope": null
+      },
+      "source": {
+        "file": "src/main/java/com/example/EndpointTaxonomySamples.java",
+        "line": 13,
+        "symbol": null
+      },
+      "metadata": {
+        "framework": "rabbitmq-listener",
+        "operation": null,
+        "confidence": 0.84,
+        "evidence": [
+          "@RabbitListener(queues = QueueName.ORDER_CREATED_QUEUE)"
+        ],
+        "evidence_count": 1,
+        "source_refs": [
+          "src/main/java/com/example/EndpointTaxonomySamples.java:13"
+        ]
+      }
+    },
+    {
+      "id": "ef732691516f12f2",
+      "direction": "egress",
+      "kind": "MESSAGE_PRODUCER",
+      "identifier": "orders.sync",
+      "match_rule": {
+        "type": "topic",
+        "broker": "rabbitmq",
+        "queue": "orders.sync",
+        "routing_key": "orders.sync.key",
+        "exchange": null
+      },
+      "owner": {
+        "service": null,
+        "module": "src/main/java/com/example",
+        "service_scope": null
+      },
+      "source": {
+        "file": "src/main/java/com/example/EndpointTaxonomySamples.java",
+        "line": 21,
+        "symbol": null
+      },
+      "metadata": {
+        "framework": "rabbitmq-producer",
+        "operation": null,
+        "confidence": 0.82,
+        "evidence": [
+          "@RabbitMqProducerAnnotation(\nproducerName = \"order sync\",\nroutingKey = RabbitRoutingKey.ORDER_SYNC_KEY,\nqueue = QueueName.ORDER_SYNC_QUEUE\n)"
+        ],
+        "evidence_count": 1,
+        "source_refs": [
+          "src/main/java/com/example/EndpointTaxonomySamples.java:21"
+        ]
+      }
+    },
+    {
+      "id": "bd5bd92f7aa4072e",
+      "direction": "egress",
+      "kind": "MESSAGE_PRODUCER",
+      "identifier": "orders.sync.key",
+      "match_rule": {
+        "type": "topic",
+        "broker": "rabbitmq",
+        "exchange": "orders.exchange",
+        "routing_key": "orders.sync.key"
+      },
+      "owner": {
+        "service": null,
+        "module": "src/main/java/com/example",
+        "service_scope": null
+      },
+      "source": {
+        "file": "src/main/java/com/example/EndpointTaxonomySamples.java",
+        "line": 30,
+        "symbol": null
+      },
+      "metadata": {
+        "framework": "rabbitmq-producer",
+        "operation": null,
+        "confidence": 0.64,
+        "evidence": [
+          "rabbitTemplate.convertAndSend(\"orders.exchange\", RabbitRoutingKey.ORDER_SYNC_KEY, body);"
+        ],
+        "evidence_count": 1,
+        "source_refs": [
+          "src/main/java/com/example/EndpointTaxonomySamples.java:30"
+        ]
+      }
+    },
+    {
+      "id": "6f61ea9265b6015f",
+      "direction": "ingress",
+      "kind": "SCHEDULED_JOB",
+      "identifier": "RefreshReportJob",
+      "match_rule": {
+        "type": "schedule",
+        "scheduler": "xxl-job",
+        "expression": "0 0 * * * ?",
+        "description": "refresh order report",
+        "disabled": false,
+        "execute_class": "RefreshReportJob"
+      },
+      "owner": {
+        "service": null,
+        "module": "src/main/java/com/example",
+        "service_scope": null
+      },
+      "source": {
+        "file": "src/main/java/com/example/EndpointTaxonomySamples.java",
+        "line": 33,
+        "symbol": null
+      },
+      "metadata": {
+        "framework": "xxl-job",
+        "operation": null,
+        "confidence": 0.86,
+        "evidence": [
+          "@XxlJob(desc = \"refresh order report\", cornExpr = \"0 0 * * * ?\", executeClass = RefreshReportJob.class)"
+        ],
+        "evidence_count": 1,
+        "source_refs": [
+          "src/main/java/com/example/EndpointTaxonomySamples.java:33"
+        ]
+      }
+    },
+    {
+      "id": "82a8972ae82da226",
+      "direction": "egress",
+      "kind": "HTTP_CALL",
+      "identifier": "GET /api/orders/{id}",
+      "match_rule": {
+        "type": "url_template",
+        "method": "GET",
+        "path": "/api/orders/{id}",
+        "client": "rest-wrapper"
+      },
+      "owner": {
+        "service": null,
+        "module": "src/main/java/com/example",
+        "service_scope": null
+      },
+      "source": {
+        "file": "src/main/java/com/example/EndpointTaxonomySamples.java",
+        "line": 43,
+        "symbol": null
+      },
+      "metadata": {
+        "framework": "rest-wrapper",
+        "operation": null,
+        "confidence": 0.7,
+        "evidence": [
+          "return restGet(KylinPathConsts.ORDER_DETAIL, id);"
+        ],
+        "evidence_count": 1,
+        "source_refs": [
+          "src/main/java/com/example/EndpointTaxonomySamples.java:43"
+        ]
+      }
+    },
+    {
+      "id": "ef032dcbeb515fcc",
+      "direction": "egress",
+      "kind": "EVENT_BUS_PUBLISHER",
+      "identifier": "OrderChangedEvent",
+      "match_rule": {
+        "type": "event",
+        "event": "OrderChangedEvent",
+        "bus": "spring-application-event"
+      },
+      "owner": {
+        "service": null,
+        "module": "src/main/java/com/example",
+        "service_scope": null
+      },
+      "source": {
+        "file": "src/main/java/com/example/EndpointTaxonomySamples.java",
+        "line": 47,
+        "symbol": null
+      },
+      "metadata": {
+        "framework": "spring-event",
+        "operation": null,
+        "confidence": 0.66,
+        "evidence": [
+          "applicationContext.publishEvent(new OrderChangedEvent());"
+        ],
+        "evidence_count": 1,
+        "source_refs": [
+          "src/main/java/com/example/EndpointTaxonomySamples.java:47"
+        ]
+      }
+    },
+    {
+      "id": "ff68f5d2ea96526a",
+      "direction": "egress",
+      "kind": "HTTP_CALL",
+      "identifier": "POST {smartGuideConfService.iconUrl[iconCode]}",
+      "match_rule": {
+        "type": "url_template",
+        "url": "{smartGuideConfService.iconUrl[iconCode]}",
+        "resolved": false,
+        "method": "POST",
+        "client": "project-http-wrapper"
+      },
+      "owner": {
+        "service": null,
+        "module": "src/main/java/com/example",
+        "service_scope": null
+      },
+      "source": {
+        "file": "src/main/java/com/example/SmartGuideSystemServer.java",
+        "line": 12,
+        "symbol": null
+      },
+      "metadata": {
+        "framework": "project-http-wrapper",
+        "operation": null,
+        "confidence": 0.78,
+        "evidence": [
+          "return smartGuideOkHttpService.responseContentByPost(url, JsonUtils.toJson(params));"
+        ],
+        "evidence_count": 1,
+        "source_refs": [
+          "src/main/java/com/example/SmartGuideSystemServer.java:12"
+        ]
+      }
+    }
+  ],
+  "audit": {
+    "graphify_used": false,
+    "graphify_index_path": null,
+    "graphify_summary": {
+      "node_count": 0,
+      "edge_count": 0,
+      "candidate_source_files": 0
+    },
+    "preflight": {
+      "scanned_files": 18,
+      "capabilities": [
+        {
+          "name": "OkHttp",
+          "potential_endpoint_kinds": [
+            "HTTP_CALL"
+          ],
+          "confirming_features": [
+            "OkHttpClient",
+            "Request.Builder",
+            "wrapper URL construction"
+          ],
+          "evidence": [
+            "src/main/java/com/example/CdpDataService.java: okhttp",
+            "src/main/java/com/example/ConfigBaseUrlClient.java: okhttp",
+            "src/main/java/com/example/SmartGuideSystemServer.java: okhttp"
+          ]
+        },
+        {
+          "name": "OpenAPI",
+          "potential_endpoint_kinds": [
+            "HTTP_API",
+            "HTTP_CALL"
+          ],
+          "confirming_features": [
+            "OpenAPI paths",
+            "generated client/server contract"
+          ],
+          "evidence": [
+            "src/main/java/com/example/OpenApiRetrofitClient.java: openapi"
+          ]
+        },
+        {
+          "name": "RabbitMQ",
+          "potential_endpoint_kinds": [
+            "MESSAGE_CONSUMER",
+            "MESSAGE_PRODUCER"
+          ],
+          "confirming_features": [
+            "@RabbitListener queues",
+            "convertAndSend",
+            "producer annotation"
+          ],
+          "evidence": [
+            "src/main/java/com/example/EndpointTaxonomySamples.java: amqp",
+            "src/main/java/com/example/RabbitMqProducerAnnotation.java: RabbitMqProducerAnnotation"
+          ]
+        },
+        {
+          "name": "Retrofit",
+          "potential_endpoint_kinds": [
+            "HTTP_CALL"
+          ],
+          "confirming_features": [
+            "Retrofit service interface",
+            "HTTP method annotations"
+          ],
+          "evidence": [
+            "src/main/java/com/example/OpenApiRetrofitClient.java: retrofit",
+            "src/main/java/com/example/RetrofitService.java: retrofit"
+          ]
+        },
+        {
+          "name": "Spring MVC",
+          "potential_endpoint_kinds": [
+            "HTTP_API"
+          ],
+          "confirming_features": [
+            "@RestController",
+            "@RequestMapping",
+            "@GetMapping",
+            "@PostMapping"
+          ],
+          "evidence": [
+            "src/main/java/com/example/BossFeignClient.java: @GetMapping"
+          ]
+        },
+        {
+          "name": "Spring OpenFeign",
+          "potential_endpoint_kinds": [
+            "HTTP_CALL"
+          ],
+          "confirming_features": [
+            "@FeignClient",
+            "method mapping annotations"
+          ],
+          "evidence": [
+            "src/main/java/com/example/BossFeignClient.java: @FeignClient"
+          ]
+        },
+        {
+          "name": "XXL-Job",
+          "potential_endpoint_kinds": [
+            "SCHEDULED_JOB"
+          ],
+          "confirming_features": [
+            "@XxlJob"
+          ],
+          "evidence": [
+            "src/main/java/com/example/EndpointTaxonomySamples.java: @XxlJob"
+          ]
+        }
+      ],
+      "capability_hints": [
+        {
+          "capability": "OkHttp",
+          "potential_endpoint_kinds": [
+            "HTTP_CALL"
+          ],
+          "confirming_features": [
+            "OkHttpClient",
+            "Request.Builder",
+            "wrapper URL construction"
+          ],
+          "scan_plan": [
+            "scan source/config features that can confirm HTTP_CALL",
+            "emit endpoints only after a concrete runtime contract identifier is visible or template-resolvable"
+          ],
+          "evidence": [
+            "src/main/java/com/example/CdpDataService.java: okhttp",
+            "src/main/java/com/example/ConfigBaseUrlClient.java: okhttp",
+            "src/main/java/com/example/SmartGuideSystemServer.java: okhttp"
+          ],
+          "status": "confirmed_by_source",
+          "confirmed_endpoint_count": 4,
+          "confirmed_kinds": {
+            "HTTP_CALL": 4
+          },
+          "audit_action": "targeted_scan_confirmed",
+          "note": "Framework/dependency capability is present and matching source/config features produced confirmed endpoint contracts.",
+          "confirmed_endpoint_samples": [
+            "src/main/java/com/example/CdpDataService.java:11",
+            "src/main/java/com/example/ConfigBaseUrlClient.java:9",
+            "src/main/java/com/example/ConfigBaseUrlClient.java:14",
+            "src/main/java/com/example/SmartGuideSystemServer.java:12"
+          ],
+          "scan_plan_executed": true
+        },
+        {
+          "capability": "OpenAPI",
+          "potential_endpoint_kinds": [
+            "HTTP_API",
+            "HTTP_CALL"
+          ],
+          "confirming_features": [
+            "OpenAPI paths",
+            "generated client/server contract"
+          ],
+          "scan_plan": [
+            "scan source/config features that can confirm HTTP_API, HTTP_CALL",
+            "emit endpoints only after a concrete runtime contract identifier is visible or template-resolvable"
+          ],
+          "evidence": [
+            "src/main/java/com/example/OpenApiRetrofitClient.java: openapi"
+          ],
+          "status": "candidate_only",
+          "confirmed_endpoint_count": 0,
+          "confirmed_kinds": {},
+          "audit_action": "targeted_scan_no_confirming_contract",
+          "note": "Capability is present in dependencies/frameworks, but no source/config evidence confirmed an endpoint contract.",
+          "confirmed_endpoint_samples": [],
+          "scan_plan_executed": true
+        },
+        {
+          "capability": "RabbitMQ",
+          "potential_endpoint_kinds": [
+            "MESSAGE_CONSUMER",
+            "MESSAGE_PRODUCER"
+          ],
+          "confirming_features": [
+            "@RabbitListener queues",
+            "convertAndSend",
+            "producer annotation"
+          ],
+          "scan_plan": [
+            "scan @RabbitListener, RabbitTemplate.convertAndSend, and project producer annotations",
+            "resolve queue, exchange, and routing key constants before endpoint emission"
+          ],
+          "evidence": [
+            "src/main/java/com/example/EndpointTaxonomySamples.java: amqp",
+            "src/main/java/com/example/RabbitMqProducerAnnotation.java: RabbitMqProducerAnnotation"
+          ],
+          "status": "confirmed_by_source",
+          "confirmed_endpoint_count": 3,
+          "confirmed_kinds": {
+            "MESSAGE_CONSUMER": 1,
+            "MESSAGE_PRODUCER": 2
+          },
+          "audit_action": "targeted_scan_confirmed",
+          "note": "Framework/dependency capability is present and matching source/config features produced confirmed endpoint contracts.",
+          "confirmed_endpoint_samples": [
+            "src/main/java/com/example/EndpointTaxonomySamples.java:13",
+            "src/main/java/com/example/EndpointTaxonomySamples.java:21",
+            "src/main/java/com/example/EndpointTaxonomySamples.java:30"
+          ],
+          "scan_plan_executed": true
+        },
+        {
+          "capability": "Retrofit",
+          "potential_endpoint_kinds": [
+            "HTTP_CALL"
+          ],
+          "confirming_features": [
+            "Retrofit service interface",
+            "HTTP method annotations"
+          ],
+          "scan_plan": [
+            "scan source/config features that can confirm HTTP_CALL",
+            "emit endpoints only after a concrete runtime contract identifier is visible or template-resolvable"
+          ],
+          "evidence": [
+            "src/main/java/com/example/OpenApiRetrofitClient.java: retrofit",
+            "src/main/java/com/example/RetrofitService.java: retrofit"
+          ],
+          "status": "confirmed_by_source",
+          "confirmed_endpoint_count": 1,
+          "confirmed_kinds": {
+            "HTTP_CALL": 1
+          },
+          "audit_action": "targeted_scan_confirmed",
+          "note": "Framework/dependency capability is present and matching source/config features produced confirmed endpoint contracts.",
+          "confirmed_endpoint_samples": [
+            "src/main/java/com/example/BossFeignClient.java:9"
+          ],
+          "scan_plan_executed": true
+        },
+        {
+          "capability": "Spring MVC",
+          "potential_endpoint_kinds": [
+            "HTTP_API"
+          ],
+          "confirming_features": [
+            "@RestController",
+            "@RequestMapping",
+            "@GetMapping",
+            "@PostMapping"
+          ],
+          "scan_plan": [
+            "scan controller annotations and class/method mapping combinations",
+            "confirm each route with HTTP method and normalized path template"
+          ],
+          "evidence": [
+            "src/main/java/com/example/BossFeignClient.java: @GetMapping"
+          ],
+          "status": "candidate_only",
+          "confirmed_endpoint_count": 0,
+          "confirmed_kinds": {},
+          "audit_action": "targeted_scan_no_confirming_contract",
+          "note": "Capability is present in dependencies/frameworks, but no source/config evidence confirmed an endpoint contract.",
+          "confirmed_endpoint_samples": [],
+          "scan_plan_executed": true
+        },
+        {
+          "capability": "Spring OpenFeign",
+          "potential_endpoint_kinds": [
+            "HTTP_CALL"
+          ],
+          "confirming_features": [
+            "@FeignClient",
+            "method mapping annotations"
+          ],
+          "scan_plan": [
+            "scan @FeignClient interfaces and inherited mapping annotations",
+            "classify client mappings as HTTP_CALL rather than HTTP_API"
+          ],
+          "evidence": [
+            "src/main/java/com/example/BossFeignClient.java: @FeignClient"
+          ],
+          "status": "confirmed_by_source",
+          "confirmed_endpoint_count": 1,
+          "confirmed_kinds": {
+            "HTTP_CALL": 1
+          },
+          "audit_action": "targeted_scan_confirmed",
+          "note": "Framework/dependency capability is present and matching source/config features produced confirmed endpoint contracts.",
+          "confirmed_endpoint_samples": [
+            "src/main/java/com/example/BossFeignClient.java:9"
+          ],
+          "scan_plan_executed": true
+        },
+        {
+          "capability": "XXL-Job",
+          "potential_endpoint_kinds": [
+            "SCHEDULED_JOB"
+          ],
+          "confirming_features": [
+            "@XxlJob"
+          ],
+          "scan_plan": [
+            "scan @XxlJob declarations and scheduler metadata",
+            "emit scheduled entry contracts with executeClass/job handler identifiers"
+          ],
+          "evidence": [
+            "src/main/java/com/example/EndpointTaxonomySamples.java: @XxlJob"
+          ],
+          "status": "confirmed_by_source",
+          "confirmed_endpoint_count": 1,
+          "confirmed_kinds": {
+            "SCHEDULED_JOB": 1
+          },
+          "audit_action": "targeted_scan_confirmed",
+          "note": "Framework/dependency capability is present and matching source/config features produced confirmed endpoint contracts.",
+          "confirmed_endpoint_samples": [
+            "src/main/java/com/example/EndpointTaxonomySamples.java:33"
+          ],
+          "scan_plan_executed": true
+        }
+      ],
+      "coverage_notes": [],
+      "rule_gap_warnings": [
+        "Capability OpenAPI detected but no endpoint was confirmed for HTTP_API, HTTP_CALL; targeted scan plan: scan source/config features that can confirm HTTP_API, HTTP_CALL; emit endpoints only after a concrete runtime contract identifier is visible or template-resolvable",
+        "Capability Spring MVC detected but no endpoint was confirmed for HTTP_API; targeted scan plan: scan controller annotations and class/method mapping combinations; confirm each route with HTTP method and normalized path template"
+      ]
+    },
+    "scan_modes": [
+      "dependency-toolchain-preflight",
+      "service-discovery",
+      "maven-dependency-closure",
+      "source",
+      "graphify-candidate-scan-skipped",
+      "pattern",
+      "pattern"
+    ],
+    "warnings": []
+  }
+}

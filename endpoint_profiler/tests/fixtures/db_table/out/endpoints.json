@@ -1,0 +1,304 @@
+{
+  "schema_version": "endpoint-profiler.v1",
+  "source_root": "C:\\Users\\apoll\\.agents\\skills\\endpoint_profiler\\tests\\fixtures\\db_table\\source",
+  "generated_at": "2026-06-04T10:24:14.417256+00:00",
+  "services": [],
+  "endpoints": [
+    {
+      "id": "5d30619199b6dd57",
+      "direction": "egress",
+      "kind": "DB_TABLE",
+      "identifier": "customer_info",
+      "match_rule": {
+        "type": "table",
+        "name": "customer_info",
+        "template": "{tenantCode_}customer_info",
+        "template_variables": [
+          "tenantCode_"
+        ],
+        "source_kind": "model_metadata",
+        "model_key": "data.guide.{tenantCode}.CustomerInfo"
+      },
+      "owner": {
+        "service": null,
+        "module": "META-INF/scripts/tenant/model",
+        "service_scope": null
+      },
+      "source": {
+        "file": "META-INF/scripts/tenant/model/20260110160000__create_customer_info.json",
+        "line": 1,
+        "symbol": null
+      },
+      "metadata": {
+        "framework": "model-metadata",
+        "operation": null,
+        "confidence": 0.95,
+        "evidence": [
+          "physicalMeta.tables tableName {tenantCode_}customer_info",
+          "FROM customer_info"
+        ],
+        "evidence_count": 2,
+        "source_refs": [
+          "META-INF/scripts/tenant/model/20260110160000__create_customer_info.json:1",
+          "src/main/resources/mapper/CustomerInfoMapper.xml:5"
+        ],
+        "service_fanout": []
+      }
+    },
+    {
+      "id": "1dc096034043b8fa",
+      "direction": "egress",
+      "kind": "DB_TABLE",
+      "identifier": "$guide",
+      "match_rule": {
+        "type": "table",
+        "name": "$guide",
+        "template": "${memberProgramCode_}guide",
+        "template_variables": [
+          "memberProgramCode_"
+        ],
+        "source_kind": "model_metadata",
+        "model_key": "data.prctvmkt.${memberProgramCode}.Guide"
+      },
+      "owner": {
+        "service": null,
+        "module": "META-INF/scripts/tenant/model",
+        "service_scope": null
+      },
+      "source": {
+        "file": "META-INF/scripts/tenant/model/20260110170000__create_guide_model.json",
+        "line": 1,
+        "symbol": null
+      },
+      "metadata": {
+        "framework": "model-metadata",
+        "operation": null,
+        "confidence": 0.95,
+        "evidence": [
+          "physicalMeta.tables tableName ${memberProgramCode_}guide"
+        ],
+        "evidence_count": 1,
+        "source_refs": [
+          "META-INF/scripts/tenant/model/20260110170000__create_guide_model.json:1"
+        ]
+      }
+    },
+    {
+      "id": "7ac27d8d719f8353",
+      "direction": "ingress",
+      "kind": "HTTP_API",
+      "identifier": "POST /cem/event",
+      "match_rule": {
+        "type": "path_template",
+        "method": "POST",
+        "path": "/cem/event"
+      },
+      "owner": {
+        "service": null,
+        "module": "src/main/java/com/example",
+        "service_scope": null
+      },
+      "source": {
+        "file": "src/main/java/com/example/CemController.java",
+        "line": 11,
+        "symbol": null
+      },
+      "metadata": {
+        "framework": "spring",
+        "operation": null,
+        "confidence": 0.82,
+        "evidence": [
+          "@PostMapping(\"event\")"
+        ],
+        "evidence_count": 1,
+        "source_refs": [
+          "src/main/java/com/example/CemController.java:11"
+        ]
+      }
+    },
+    {
+      "id": "0b05089cf6dc7825",
+      "direction": "egress",
+      "kind": "DB_TABLE",
+      "identifier": "red_packet_call_back",
+      "match_rule": {
+        "type": "table",
+        "name": "red_packet_call_back",
+        "source_kind": "source_sql"
+      },
+      "owner": {
+        "service": null,
+        "module": "src/main/java/com/example",
+        "service_scope": null
+      },
+      "source": {
+        "file": "src/main/java/com/example/RedPacketCallBack.java",
+        "line": 5,
+        "symbol": null
+      },
+      "metadata": {
+        "framework": "database",
+        "operation": null,
+        "confidence": 0.75,
+        "evidence": [
+          "@TableName(\"red_packet_call_back\")"
+        ],
+        "evidence_count": 1,
+        "source_refs": [
+          "src/main/java/com/example/RedPacketCallBack.java:5"
+        ]
+      }
+    },
+    {
+      "id": "df41c40483dfbfd9",
+      "direction": "egress",
+      "kind": "DB_TABLE",
+      "identifier": "t_user",
+      "match_rule": {
+        "type": "table",
+        "name": "t_user",
+        "source_kind": "source_sql"
+      },
+      "owner": {
+        "service": null,
+        "module": "src/main/java/com/example",
+        "service_scope": null
+      },
+      "source": {
+        "file": "src/main/java/com/example/UserMapper.java",
+        "line": 6,
+        "symbol": null
+      },
+      "metadata": {
+        "framework": "database",
+        "operation": null,
+        "confidence": 0.85,
+        "evidence": [
+          "@Select(\"SELECT status FROM t_user WHERE third_user_id = #{ownerId}\")"
+        ],
+        "evidence_count": 1,
+        "source_refs": [
+          "src/main/java/com/example/UserMapper.java:6"
+        ]
+      }
+    }
+  ],
+  "audit": {
+    "graphify_used": false,
+    "graphify_index_path": null,
+    "graphify_summary": {
+      "node_count": 0,
+      "edge_count": 0,
+      "candidate_source_files": 0
+    },
+    "preflight": {
+      "scanned_files": 6,
+      "capabilities": [
+        {
+          "name": "MyBatis",
+          "potential_endpoint_kinds": [
+            "DB_TABLE"
+          ],
+          "confirming_features": [
+            "@TableName",
+            "mapper SQL",
+            "mapper XML table-position SQL"
+          ],
+          "evidence": [
+            "src/main/java/com/example/RedPacketCallBack.java: mybatis"
+          ]
+        },
+        {
+          "name": "Spring MVC",
+          "potential_endpoint_kinds": [
+            "HTTP_API"
+          ],
+          "confirming_features": [
+            "@RestController",
+            "@RequestMapping",
+            "@GetMapping",
+            "@PostMapping"
+          ],
+          "evidence": [
+            "src/main/java/com/example/CemController.java: @PostMapping"
+          ]
+        }
+      ],
+      "capability_hints": [
+        {
+          "capability": "MyBatis",
+          "potential_endpoint_kinds": [
+            "DB_TABLE"
+          ],
+          "confirming_features": [
+            "@TableName",
+            "mapper SQL",
+            "mapper XML table-position SQL"
+          ],
+          "scan_plan": [
+            "scan @TableName, mapper interfaces, mapper XML, and table-position SQL",
+            "exclude tests, migrations, comments, and unresolved generic table constants"
+          ],
+          "evidence": [
+            "src/main/java/com/example/RedPacketCallBack.java: mybatis"
+          ],
+          "status": "confirmed_by_source",
+          "confirmed_endpoint_count": 3,
+          "confirmed_kinds": {
+            "DB_TABLE": 3
+          },
+          "audit_action": "targeted_scan_confirmed",
+          "note": "Framework/dependency capability is present and matching source/config features produced confirmed endpoint contracts.",
+          "confirmed_endpoint_samples": [
+            "META-INF/scripts/tenant/model/20260110160000__create_customer_info.json:1",
+            "src/main/java/com/example/RedPacketCallBack.java:5",
+            "src/main/java/com/example/UserMapper.java:6"
+          ],
+          "scan_plan_executed": true
+        },
+        {
+          "capability": "Spring MVC",
+          "potential_endpoint_kinds": [
+            "HTTP_API"
+          ],
+          "confirming_features": [
+            "@RestController",
+            "@RequestMapping",
+            "@GetMapping",
+            "@PostMapping"
+          ],
+          "scan_plan": [
+            "scan controller annotations and class/method mapping combinations",
+            "confirm each route with HTTP method and normalized path template"
+          ],
+          "evidence": [
+            "src/main/java/com/example/CemController.java: @PostMapping"
+          ],
+          "status": "confirmed_by_source",
+          "confirmed_endpoint_count": 1,
+          "confirmed_kinds": {
+            "HTTP_API": 1
+          },
+          "audit_action": "targeted_scan_confirmed",
+          "note": "Framework/dependency capability is present and matching source/config features produced confirmed endpoint contracts.",
+          "confirmed_endpoint_samples": [
+            "src/main/java/com/example/CemController.java:11"
+          ],
+          "scan_plan_executed": true
+        }
+      ],
+      "coverage_notes": [],
+      "rule_gap_warnings": []
+    },
+    "scan_modes": [
+      "dependency-toolchain-preflight",
+      "service-discovery",
+      "maven-dependency-closure",
+      "source",
+      "graphify-candidate-scan-skipped",
+      "pattern",
+      "pattern"
+    ],
+    "warnings": []
+  }
+}
