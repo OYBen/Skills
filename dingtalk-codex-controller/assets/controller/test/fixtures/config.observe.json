@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "mode": "observe",
+  "pollIntervalSeconds": 60,
+  "closedWindowDelaySeconds": 10,
+  "overlapSeconds": 300,
+  "channel": {
+    "kind": "direct",
+    "conversationId": "fixture-conversation",
+    "peerUserId": "fixture-peer-user",
+    "peerOpenDingTalkId": "fixture-peer-open",
+    "selfUserId": "fixture-self-user",
+    "selfOpenDingTalkId": "fixture-self-open"
+  },
+  "task": {
+    "threadId": "fixture-thread",
+    "expectedTitle": "Fixture Task",
+    "cwd": "C:\\Tools\\DingTalkCodexController\\sandbox",
+    "permissionProfile": "fixture-restricted"
+  },
+  "actions": {},
+  "gates": {
+    "dwsProtocolVerified": false,
+    "codexPermissionVerified": false,
+    "codexReconciliationVerified": false,
+    "outboundAuthorizationVerified": false
+  },
+  "delivery": {
+    "mode": "disabled"
+  },
+  "limits": {
+    "pageSize": 100,
+    "maxPagesPerScan": 10,
+    "maxCatchUpSeconds": 3600,
+    "controllerLeaseSeconds": 60,
+    "maxAcceptedPerFiveMinutes": 5,
+    "maxAcceptedPerHour": 20,
+    "outboxRetryWindowSeconds": 43200
+  },
+  "paths": {
+    "database": "data/fixture.db",
+    "payloads": "data/fixture-payloads"
+  }
+}

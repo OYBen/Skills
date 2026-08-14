@@ -1,0 +1,20 @@
+{
+  "success": true,
+  "result": {
+    "items": [
+      {
+        "openMessageId": "fixture-message-1",
+        "createTime": "2026-08-13T04:59:00.000Z",
+        "openConversationId": "fixture-conversation",
+        "senderUserId": "fixture-peer-user",
+        "senderOpenDingTalkId": "fixture-peer-open",
+        "msgType": "text",
+        "text": {
+          "content": "/codex help"
+        }
+      }
+    ],
+    "hasMore": false,
+    "nextCursor": null
+  }
+}

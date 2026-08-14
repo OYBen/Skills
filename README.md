@@ -25,3 +25,9 @@ Install by copying `dws/` into your skills directory, then invoke with `$dws` or
 TAPD CLI skill for stories, bugs, tasks, Wiki, comments, attachments, iterations, custom fields, and quick lookup from `tapd.cn` URLs.
 
 Install by copying `tapd/` into your skills directory, then invoke with `$tapd` or the configured trigger. Create a local `tapd/config.json` from `tapd/config.example.json` if you want to provide `TAPD_ACCESS_TOKEN` through the skill directory.
+
+## dingtalk-codex-controller
+
+Windows DingTalk-to-Codex controller skill with deterministic task discovery, target and watch bindings, queued delivery to busy Codex Desktop tasks, watermarked DingTalk replies, hidden scheduled-task operation, and guarded upgrade scripts.
+
+Install by copying `dingtalk-codex-controller/` into your skills directory, then follow its `README.md`. Real DingTalk identities, task IDs, configuration, databases, logs, and payload history are intentionally excluded.

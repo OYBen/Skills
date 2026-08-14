@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "mode": "observe",
+  "pollIntervalSeconds": 60,
+  "closedWindowDelaySeconds": 10,
+  "overlapSeconds": 300,
+  "channel": {
+    "conversationId": "<resolved-conversation-id>",
+    "kind": "direct",
+    "peerUserId": "<resolved-peer-user-id>",
+    "peerOpenDingTalkId": "<resolved-peer-open-dingtalk-id>",
+    "selfUserId": "<resolved-self-user-id>",
+    "selfOpenDingTalkId": "<resolved-self-open-dingtalk-id>"
+  },
+  "task": {
+    "enrolled": true,
+    "threadId": "<dedicated-restricted-thread-id>",
+    "expectedTitle": "DingTalk Controller Test Task",
+    "cwd": "<absolute-dedicated-controller-sandbox-path>",
+    "permissionProfile": "<verified-restricted-profile>"
+  },
+  "actions": {
+    "health-check": {
+      "promptFile": "config/actions/health-check.txt",
+      "promptSha256": "84656e10ba7dde5faacc519247fb149c63b7cf661d8a4a6408691b49d8be0e2d",
+      "risk": "low",
+      "enabled": false
+    }
+  },
+  "gates": {
+    "dwsProtocolVerified": false,
+    "codexPermissionVerified": false,
+    "codexReconciliationVerified": false,
+    "outboundAuthorizationVerified": false
+  },
+  "delivery": {
+    "mode": "disabled"
+  },
+  "limits": {
+    "pageSize": 100,
+    "maxPagesPerScan": 100,
+    "maxCatchUpSeconds": 3600,
+    "controllerLeaseSeconds": 60,
+    "maxAcceptedPerFiveMinutes": 5,
+    "maxAcceptedPerHour": 20,
+    "outboxRetryWindowSeconds": 43200
+  },
+  "paths": {
+    "database": "data/controller.db",
+    "payloads": "data/payloads"
+  }
+}

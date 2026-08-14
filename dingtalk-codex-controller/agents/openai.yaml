@@ -1,0 +1,4 @@
+interface:
+  display_name: "DingTalk Codex Controller"
+  short_description: "Deploy and operate a queued DingTalk-to-Codex controller"
+  default_prompt: "Use $dingtalk-codex-controller to deploy or operate the DingTalk-to-Codex controller."

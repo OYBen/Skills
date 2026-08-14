@@ -1,0 +1,1 @@
+Inspect only the dedicated controller workspace and report whether it is healthy in no more than 300 Unicode characters. Do not access credentials, DingTalk, email, browser, network resources, files outside the workspace, or destructive tools. Do not modify files.

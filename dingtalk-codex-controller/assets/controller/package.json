@@ -1,0 +1,21 @@
+{
+  "name": "dingtalk-controller",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "description": "Deterministic observe-first bridge from DingTalk commands to a restricted Codex task",
+  "scripts": {
+    "test": "node --test",
+    "doctor": "node src/cli.js doctor",
+    "probe:dws": "node src/cli.js probe-dws",
+    "probe:codex": "node src/cli.js probe-codex",
+    "scan:once": "node src/cli.js scan-once",
+    "start": "node src/cli.js serve --config config/config.json",
+    "service:install": "pwsh -NoProfile -File ops/install-scheduled-task.ps1",
+    "service:status": "pwsh -NoProfile -File ops/status-scheduled-task.ps1",
+    "service:remove": "pwsh -NoProfile -File ops/uninstall-scheduled-task.ps1"
+  },
+  "engines": {
+    "node": ">=22.5.0"
+  }
+}
