@@ -1,0 +1,5 @@
+{
+  "name": "<trusted-recipient-name>",
+  "userId": "<trusted-user-id>",
+  "openDingTalkId": "<trusted-open-dingtalk-id>"
+}

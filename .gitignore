@@ -2,6 +2,7 @@ tapd/config.json
 dingtalk-codex-controller/assets/controller/config/config.json
 dingtalk-codex-controller/assets/controller/data/
 dingtalk-codex-controller/assets/controller/logs/
+dingtalk-chat-assistant/references/trusted-recipient.local.json
 **/.DS_Store
 **/__pycache__/
 *.pyc

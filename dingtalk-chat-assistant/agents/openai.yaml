@@ -1,0 +1,4 @@
+interface:
+  display_name: "钉钉聊天助手"
+  short_description: "总结钉钉聊天，受控应答并向产品经理确认问题"
+  default_prompt: "使用 $dingtalk-chat-assistant 总结最近的钉钉聊天，并为需要处理的消息拟定回复。"

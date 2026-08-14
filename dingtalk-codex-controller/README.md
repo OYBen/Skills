@@ -14,6 +14,21 @@ LLM. The target Codex task handles the instruction itself.
 - Codex Desktop and Codex CLI
 - Installed `dingtalk-chat-assistant` skill and its watermark scripts
 
+The public skills repository excludes the trusted recipient's raw identity. On
+the destination machine, resolve the intended recipient with an exact-name
+`dws aisearch person` query, require one exact candidate, then run this from the
+installed `dingtalk-chat-assistant` directory:
+
+```powershell
+python scripts/configure_trusted_recipient.py
+```
+
+Enter the resolved name, `userId`, and `openDingTalkId` at the prompts. The two
+IDs are not echoed. The generated `references/trusted-recipient.local.json`
+must remain local and must never be committed. For unattended deployment, pass
+an equivalent private JSON file from outside the repository with
+`--from-file <private-json>`.
+
 ## Install Or Upgrade
 
 The installer copies the bundled runtime without overwriting an existing real
